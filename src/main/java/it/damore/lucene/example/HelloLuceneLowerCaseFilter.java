@@ -21,13 +21,13 @@ public class HelloLuceneLowerCaseFilter {
 
   public static void main(String[] args) throws IOException
   {
-    LowerCaseFilterFactory lowerCaseFilterFactory = init();
+    LowerCaseFilterFactory lowerCaseFilterFactory = getLowerCaseFilterFactory();
     applyFilter(lowerCaseFilterFactory, "TESTO di Prova");
     applyFilter(lowerCaseFilterFactory, "Incremento di vendita in Italia");
     applyFilter(lowerCaseFilterFactory, "United States of America");
   }
 
-  public static LowerCaseFilterFactory init()
+  public static LowerCaseFilterFactory getLowerCaseFilterFactory()
   {
     // create the LowerCaseFilterFactory
     LowerCaseFilterFactory syf = new LowerCaseFilterFactory(Collections.emptyMap());
