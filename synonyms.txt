@@ -1,0 +1,10 @@
+testo, paragrafo
+prova => test
+incremento, aumento, crescita, ingrandimento, allargamento, ampliamento, sviluppo, progresso, rafforzamento, consolidamento, intensificazione, potenziamento, accrescimento
+vendita, commercio, traffico, compravendita, distribuzione, liquidazione, svendita
+United States of America => USA
+
+dvd-rw=>dvd minusxx rw
+dvd+rw=>dvd plusxx rw
+
+min, minuti, minuto
