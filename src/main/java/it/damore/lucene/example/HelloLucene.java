@@ -1,5 +1,6 @@
 package it.damore.lucene.example;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -17,6 +18,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopScoreDocCollector;
 import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.MMapDirectory;
 import org.apache.lucene.store.RAMDirectory;
 
 public class HelloLucene {
@@ -26,7 +28,7 @@ public class HelloLucene {
     StandardAnalyzer analyzer = new StandardAnalyzer();
 
     // 1. create the index
-    Directory index = new RAMDirectory();
+    Directory index = new MMapDirectory(Paths.get("/tmp/"));
 
     IndexWriterConfig config = new IndexWriterConfig(analyzer);
 
@@ -48,7 +50,7 @@ public class HelloLucene {
     int hitsPerPage = 10;
     IndexReader reader = DirectoryReader.open(index);
     IndexSearcher searcher = new IndexSearcher(reader);
-    TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage);
+    TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage, Integer.MAX_VALUE);
     searcher.search(q, collector);
     ScoreDoc[] hits = collector.topDocs().scoreDocs;
     
