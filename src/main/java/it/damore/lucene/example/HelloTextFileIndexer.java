@@ -25,7 +25,7 @@ import org.apache.lucene.search.TopScoreDocCollector;
 import org.apache.lucene.store.FSDirectory;
 
 /**
- * This terminal application creates an Apache Lucene index in a folder and adds files into this index based on the
+ * This console application creates an Apache Lucene index in a folder and adds files into this index based on the
  * input of the user.
  */
 public class HelloTextFileIndexer {
@@ -82,7 +82,7 @@ public class HelloTextFileIndexer {
     // =========================================================
     IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(indexLocation)));
     IndexSearcher searcher = new IndexSearcher(reader);
-    TopScoreDocCollector collector = TopScoreDocCollector.create(5);
+    TopScoreDocCollector collector = TopScoreDocCollector.create(5, Integer.MAX_VALUE);
 
     s = "";
     while (!s.equalsIgnoreCase("q")) {
@@ -143,7 +143,7 @@ public class HelloTextFileIndexer {
     // ===================================================
     addFiles(new File(fileName));
 
-    int originalNumDocs = writer.numDocs();
+    int originalNumDocs = writer.getDocStats().numDocs;
     for (File f : queue) {
       FileReader fr = null;
       try {
@@ -166,7 +166,7 @@ public class HelloTextFileIndexer {
       }
     }
 
-    int newNumDocs = writer.numDocs();
+    int newNumDocs = writer.getDocStats().numDocs;
     System.out.println("");
     System.out.println("************************");
     System.out.println((newNumDocs - originalNumDocs) + " documents added.");
