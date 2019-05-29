@@ -12,7 +12,7 @@
 
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <lucene-version>8.0.0</lucene-version>
+      <lucene-version>8.1.1</lucene-version>
    </properties>
    <build>
       <resources>
